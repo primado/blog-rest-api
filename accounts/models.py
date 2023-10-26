@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-class Authors(AbstractUser):
+class CustomUser(AbstractUser):
     bio = models.TextField(max_length=300, blank=True)
     profile_picture = models.ImageField(upload_to=None, blank=True, null=True)
     website = models.URLField(max_length=200, blank=True,)

@@ -3,14 +3,15 @@ from .models import *
 
 # Register your models here.
 
-@admin.register(Posts)
+@admin.register(Post)
 class PostsAdmin(admin.ModelAdmin):
-    list_display = ['id', 'author_id', 'display_username', 'title', 'display_blog_status']
-    list_select_related = ['author_id', 'id',]
+    list_display = ['id', 'author_id', 'title', 'slug', 'display_blog_status', ]
+    list_display_links = ['title', 'slug']
+    list_select_related = ['author_id',]
 
-    def display_username(self, request):
-        user = request.user.username 
-        return user
+    # def display_username(self, obj):
+    #     username = obj.author_id
+    #     return username
     
     def display_blog_status(self, obj):
         if obj.is_draft == True:
@@ -20,10 +21,10 @@ class PostsAdmin(admin.ModelAdmin):
         else: None
 
 
-@admin.register(Comments)
+@admin.register(Comment)
 class CommentsAdmin(admin.ModelAdmin):
     list_display = ['id', 'author_id', 'display_username', 'text',]
-    list_select_related = ['text',]
+    list_select_related = ['author_id',]
 
 
     def display_username(self, request):
@@ -31,7 +32,7 @@ class CommentsAdmin(admin.ModelAdmin):
         return user
     
 
-@admin.register(Tags)
+@admin.register(Tag)
 class TagsAdmin(admin.ModelAdmin):
     list_display = ['id', 'name',]
 

@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    'accounts.apps.AccountsConfig',
-    'blog.apps.BlogConfig',
-    'blog_api.apps.BlogApiConfig',
+    'accounts',
+    'blog',
+    'blog_api',
 
     'rest_framework',
     'rest_framework.authtoken',
@@ -105,7 +105,7 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 
 ROOT_URLCONF = 'core.urls'
 
-AUTH_USER_MODEL = 'accounts.Authors'
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 TEMPLATES = [
     {
