@@ -47,13 +47,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
 
+    'allauth',
+    'allauth.account',
+
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'rest_framework_simplejwt',
-    'corsheaders'
-    
-
-   
+    'corsheaders'   
 ]
 
 MIDDLEWARE = [
@@ -65,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'allauth.account.middleware.AccountMiddleware'
 ]
 
 REST_AUTH = {
@@ -78,6 +80,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
     
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 
 }

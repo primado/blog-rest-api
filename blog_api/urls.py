@@ -7,11 +7,11 @@ app_name = 'blog_api    '
 
 
 router = DefaultRouter()
-router.register(r'api/blog', BlogPostViewSet)
+router.register(r'api/blog', BlogPostListView)
 
 
 urlpatterns = [
-    path('api/blog/<slug:slug>/', BlogPostViewSet.as_view({'get': 'retrieve'}), name='get-article'),
+    path('api/blog/<slug:slug>/', BlogPostListView.as_view({'get': 'retrieve'}), name='get-article'),
     path('', include(router.urls)),
 
 ]

@@ -5,7 +5,7 @@ from .models import *
 
 @admin.register(Post)
 class PostsAdmin(admin.ModelAdmin):
-    list_display = ['id', 'author_id', 'title', 'slug', 'display_blog_status', ]
+    list_display = ['id', 'user', 'title', 'slug', 'display_blog_status', ]
     list_display_links = ['title', 'slug']
     list_select_related = ['author_id',]
 
@@ -23,7 +23,7 @@ class PostsAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentsAdmin(admin.ModelAdmin):
-    list_display = ['id', 'author_id', 'display_username', 'text',]
+    list_display = ['id', 'user', 'display_username', 'text',]
     list_select_related = ['author_id',]
 
 

@@ -17,7 +17,7 @@ class Post(models.Model):
     title = models.CharField(max_length=150)
     slug = models.SlugField(unique=True, blank=True, max_length=150)
     content = models.TextField(blank=True)
-    author_id = models.ForeignKey(to=CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(to=CustomUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     tags = models.ForeignKey(to=Tag, on_delete=models.CASCADE)
@@ -35,7 +35,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    author_id = models.ForeignKey(to=CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(to=CustomUser, on_delete=models.CASCADE)
     post_id = models.ForeignKey(to=Post, on_delete=models.CASCADE)
     text = models.CharField(max_length=2000, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

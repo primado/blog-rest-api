@@ -11,7 +11,7 @@ from .serializers import *
 # Create your views here.
 
 
-class BlogPostViewSet(ModelViewSet):
+class BlogPostListView(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     # permission_classes = [IsAuthenticated]
@@ -29,6 +29,9 @@ class BlogPostViewSet(ModelViewSet):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Post.DoesNotExist:
             return Response({"detail": "Article does not exist"}, status=status.HTTP_400_BAD_REQUEST)
+        
+
+
         
         
 
